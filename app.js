@@ -3,14 +3,16 @@ var app = express();
 
 app.set('view engine', 'pug');
 
+app.use('/public', express.static(__dirname + '/public'));
+
 app.route('/')
   .get(function(req, res) {
-    res.render('index');
+    res.render('baconnect');
   });
 
 app.route('/baconnect')
   .get(function(req, res) {
-    res.render('index');
+    res.render('baconnect');
   });
 
 var server = app.listen(3000, function() {

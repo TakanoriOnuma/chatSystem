@@ -1,0 +1,12 @@
+body {
+  width: 320px;
+  margin-right: auto;
+  margin-left:  auto;
+}
+
+#container {
+  width:  320px;
+  height: 480px;
+  background-image: url("/public/images/background.jpg");
+  background-repeat: no-repeat;
+}
