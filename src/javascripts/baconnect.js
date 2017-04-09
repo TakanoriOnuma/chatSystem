@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/Header.js';
+import Header from './components/Header';
+import UserRegistForm from './components/UserRegistForm';
 
 class Page extends React.Component {
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <UserRegistForm />
+      </div>
     );
   }
 }
