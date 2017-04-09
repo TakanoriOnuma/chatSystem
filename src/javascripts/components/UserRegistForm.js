@@ -22,7 +22,7 @@ export default class UserRegistForm extends React.Component {
       type: 'POST',
       data: data,
       cache: false,
-      success: () => { window.alert('ok'); },
+      success: () => { window.alert('ok'); window.location.href = '/rooms'; },
       error: (xhr, status, err) => {
         try {
           const res = $.parseJSON(xhr.responseText);
