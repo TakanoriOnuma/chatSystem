@@ -1,6 +1,32 @@
 import React from 'react';
+import $ from 'jquery';
 
 export default class UserRegistForm extends React.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+    const data = {
+      name:    this.refs.name.value.trim(),
+      message: this.refs.message.value.trim()
+    };
+
+    $.ajax({
+      url: 'v1/users',
+      dataType: 'json',
+      type: 'POST',
+      data: data,
+      cache: false,
+      success: () => { window.alert('ok'); },
+      error: (xhr, status, err) => {
+        try {
+          const res = $.parseJSON(xhr.responseText);
+          console.log(res.message);          
+        }
+        catch(e) {
+          console.log(e);
+        }
+      }
+    });
+  }
   render() {
     const style = {
       form: {
@@ -32,12 +58,12 @@ export default class UserRegistForm extends React.Component {
     };
     return(
       <div style={style.form}>
-        <form action="">
+        <form action="" onSubmit={this.handleSubmit.bind(this)}>
           <label htmlFor="name">ニックネーム</label><br />
-          <input id="name" type="text" name="name" style={style.text} /><br />
+          <input id="name" ref="name" type="text" name="name" style={style.text} /><br />
           <br />
           <label htmlFor="message">一言メッセージ（任意）</label><br />
-          <textarea name="message" id="message" cols="30" rows="10" style={style.textarea}></textarea><br />
+          <textarea name="message" ref="message" id="message" cols="30" rows="10" style={style.textarea}></textarea><br />
           <br />
           <button type="submit" style={style.button}>入場</button>
           <br />
