@@ -5,7 +5,7 @@ export default class UserRegistForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      errMsg: 'test'
+      errMsg: ''
     };
   }
 
