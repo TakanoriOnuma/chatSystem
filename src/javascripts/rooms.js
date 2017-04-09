@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
-import UserRegistForm from './components/UserRegistForm';
+import $ from 'jquery';
+import nl2br from 'react-nl2br';
 
 class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'Welcome!\n' + $('#name').val() + 'さん'
+    };
+  }
   render() {
-    return (
+    return(
       <div>
-        <Header text='ベーコネクト｜Chat in Room!' />
-        <UserRegistForm />
+        <Header text={nl2br(this.state.text)} />
       </div>
-    );
+    )
   }
 }
 

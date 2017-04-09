@@ -36,7 +36,7 @@ app.route('/rooms')
       res.redirect('/');
       return;
     }
-    res.render('rooms')
+    res.render('rooms', req.session.user);
   });
 
 app.route('/v1/users')

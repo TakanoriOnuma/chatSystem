@@ -9,7 +9,7 @@ var watchify    = require('watchify');
 var paths = {
   src:  './src/javascripts/',
   dest: './public/javascripts/',
-  files: ['baconnect.js']
+  files: ['baconnect.js', 'rooms.js']
 };
 
 function errorHandler(err) {

@@ -5,11 +5,14 @@ export default class Header extends React.Component {
     const style = {
       header: {
         backgroundColor: 'lightcyan',
-        height: '50px'
+        border: '0',
+        borderCollapse: 'collapse',
+        borderSpacing: '0',
+        height: '50px',
+        width: '100%'
       },
       logo: {
-        height: '50px',
-        verticalAlign: 'middle'
+        height: '50px'
       },
       text: {
         color: 'blue',
@@ -18,9 +21,14 @@ export default class Header extends React.Component {
     };
 
     return (
-      <div style={style.header}>
-        <img style={style.logo} src="/public/images/logo.png" alt="" />
-        <span style={style.text}>ベーコネクト｜Chat in Room!</span>
+      <div>
+        <table style={style.header}>
+          <tr>
+            <td style={{width: '60px'}}><img style={style.logo} src="/public/images/logo.png" alt="" /></td>
+            <td><span style={style.text}>{this.props.text}</span></td>
+            <td></td>
+          </tr>
+        </table>
       </div>
     );
   }
