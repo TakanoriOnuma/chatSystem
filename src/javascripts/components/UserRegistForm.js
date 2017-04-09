@@ -2,6 +2,13 @@ import React from 'react';
 import $ from 'jquery';
 
 export default class UserRegistForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      errMsg: 'test'
+    };
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const data = {
@@ -19,14 +26,15 @@ export default class UserRegistForm extends React.Component {
       error: (xhr, status, err) => {
         try {
           const res = $.parseJSON(xhr.responseText);
-          console.log(res.message);          
+          this.setState({errMsg: res.message});       
         }
         catch(e) {
-          console.log(e);
+          console.error(e);
         }
       }
     });
   }
+
   render() {
     const style = {
       form: {
@@ -54,6 +62,11 @@ export default class UserRegistForm extends React.Component {
       supplement: {
         color: '#999999',
         fontSize: '0.8em'
+      },
+      error: {
+        width: '100%',
+        color: '#FF0000',
+        textAlign: 'center'
       }
     };
     return(
@@ -67,6 +80,7 @@ export default class UserRegistForm extends React.Component {
           <br />
           <button type="submit" style={style.button}>入場</button>
           <br />
+          <div style={style.error}>{this.state.errMsg}</div>
           <br />
           <div style={style.supplement}>※ニックネームが全角10文字以内、一言メッセージが30文字以内で入力してください。</div>
         </form>

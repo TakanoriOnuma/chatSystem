@@ -24,11 +24,11 @@ app.route('/baconnect')
 app.route('/v1/users')
   .post(function(req, res) {
     if(!req.body.name) {
-      res.status(400).send({ message: 'ユーザ名を入力してください。' });
+      res.status(400).send({ message: 'ニックネームを入力してください。' });
       return;
     }
     if(req.body.name.length > 10) {
-      res.status(400).send({ message: 'ユーザ名は10文字以内にしてください。' });
+      res.status(400).send({ message: 'ニックネームは10文字以内にしてください。' });
       return;
     } 
 
