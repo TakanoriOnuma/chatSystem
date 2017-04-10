@@ -2,19 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import $ from 'jquery';
-import nl2br from 'react-nl2br';
 
 class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Welcome!\n' + $('#name').val() + 'さん'
+      user: {
+        name:    $('#name').val(),
+        message: $('#message').val()
+      }
     };
   }
   render() {
     return(
       <div>
-        <Header text={nl2br(this.state.text)} />
+        <Header user={this.state.user} />
       </div>
     )
   }

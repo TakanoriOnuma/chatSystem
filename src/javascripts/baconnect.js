@@ -7,7 +7,7 @@ class Page extends React.Component {
   render() {
     return (
       <div>
-        <Header text='ベーコネクト｜Chat in Room!' />
+        <Header />
         <UserRegistForm />
       </div>
     );
