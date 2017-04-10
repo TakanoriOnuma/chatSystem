@@ -46,6 +46,18 @@ gulp.task('bundle', function() {
   });
 });
 
+gulp.task('build', function() {
+  paths.files.forEach(function(entryPoint) {
+    browserify({entries: [paths.src + entryPoint]})
+      .transform(babelify, {presets: ['es2015', 'react']})
+      .bundle()
+      .on('error', errorHandler)
+      .pipe(source(entryPoint))
+      .pipe(buffer())
+      .pipe(gulp.dest(paths.dest));
+  });
+});
+
 // 自動ブラウザリロード
 gulp.task('browser-sync', function() {
   browserSync({
